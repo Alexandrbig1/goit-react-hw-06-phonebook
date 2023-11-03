@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Field, Form, ErrorMessage } from 'formik';
-import { HiUser, HiPhone } from 'react-icons/hi2';
+import styled from "styled-components";
+import { Field, Form, ErrorMessage } from "formik";
+import { HiUser, HiPhone } from "react-icons/hi2";
 
 export const FormStyled = styled(Form)`
   display: flex;
@@ -41,7 +41,7 @@ export const FormInputWrapper = styled.div`
   position: relative;
 
   &:focus-within {
-    color: ${p => p.theme.colors.contactBtn};
+    color: ${(p) => p.theme.colors.contactBtn};
   }
 `;
 
@@ -60,11 +60,11 @@ export const FormHiPhone = styled(HiPhone)`
 `;
 
 export const FormError = styled(ErrorMessage)`
-  color: ${p => p.theme.colors.deleteBtn};
+  color: ${(p) => p.theme.colors.deleteBtn};
 `;
 
 export const FormLabel = styled.label`
-  color: #050505;
+  color: ${(p) => p.theme.colors.textColor};
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -79,11 +79,9 @@ export const FormContactBtn = styled.button`
   padding: 8px 20px;
   border-radius: 24px;
   cursor: pointer;
-  color: #fff;
-  background-color: ${p => p.theme.colors.contactBtn};
+  background-color: ${(p) => p.theme.colors.contactBtn};
   transition: 0.3s;
-
-  color: #f8f8f8;
+  color: ${(p) => p.theme.colors.textColor};
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 12px;
   font-style: normal;

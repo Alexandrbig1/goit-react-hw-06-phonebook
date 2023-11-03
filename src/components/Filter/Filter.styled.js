@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FilterDiv = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ export const FilterInput = styled.input`
 `;
 
 export const FilterLabel = styled.label`
-  color: #050505;
+  color: ${(p) => p.theme.colors.textColor};
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;

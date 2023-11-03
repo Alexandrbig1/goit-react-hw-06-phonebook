@@ -13,7 +13,7 @@ export const P = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #050505;
+  color: ${(p) => p.theme.colors.textColor};
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-style: normal;

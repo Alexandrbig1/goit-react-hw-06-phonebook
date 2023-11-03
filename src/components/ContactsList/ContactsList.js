@@ -1,5 +1,5 @@
 import ContactItems from "../ContactItems/ContactItems";
-import { Menu } from "./ContactsList.styled";
+import { Menu, Item } from "./ContactsList.styled";
 
 export default function ContactsList({
   contacts,
@@ -7,9 +7,9 @@ export default function ContactsList({
   searchTerm,
 }) {
   return (
-    <Menu className="contact-menu">
+    <Menu>
       {contacts.length === 0 && searchTerm.length > 0 ? (
-        <li className="contact-list">No matching contacts found</li>
+        <Item className="contact-list">No matching contacts found</Item>
       ) : contacts.length > 0 ? (
         contacts.map(({ contact, phoneNumber, id }) => (
           <ContactItems

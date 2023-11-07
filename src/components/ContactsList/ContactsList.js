@@ -19,7 +19,7 @@ export default function ContactsList() {
 
   return (
     <Menu>
-      {visibleContacts.length === 0 && filteredContacts.length > 0 ? (
+      {visibleContacts.length === 0 ? (
         <Item className="contact-list">No matching contacts found</Item>
       ) : visibleContacts.length > 0 ? (
         visibleContacts.map(({ contact, phoneNumber, id }) => (

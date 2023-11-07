@@ -7,6 +7,15 @@ export const List = styled.li`
   gap: 16px;
   align-items: center;
   justify-content: space-between;
+  padding: 0 0.4rem;
+  border-radius: 0.2rem;
+
+  &:nth-child(even) {
+    background-color: ${(p) => p.theme.colors.itemsEven};
+  }
+  &:nth-child(odd) {
+    background-color: ${(p) => p.theme.colors.itemsOdd};
+  }
 `;
 
 export const P = styled.p`

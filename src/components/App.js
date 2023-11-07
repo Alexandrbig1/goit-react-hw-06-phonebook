@@ -22,12 +22,14 @@ import {
 const theme = {
   light: {
     colors: {
-      mainBgColor: "#ced4da",
+      mainBgColor: "#e9ecef",
       textColor: "#050505",
       contactBtn: "#2982ff",
       deleteBtn: "#ff2929",
       bgWrapper: "#f8f9fa",
       containerColor: "#dee2e6",
+      itemsEven: "#f8f9fa",
+      itemsOdd: "#dee2e6",
       boxShadow: "rgba(255, 255, 255, 0.5)",
     },
   },
@@ -39,6 +41,8 @@ const theme = {
       deleteBtn: "#ff2929",
       bgWrapper: "#0b0014",
       containerColor: "#050505",
+      itemsEven: "#212529",
+      itemsOdd: "#343a40",
       boxShadow: "none",
     },
   },

@@ -8,8 +8,9 @@ export default function ContactsList() {
   const filteredContacts = useSelector(getFiltersContacts);
 
   function filteredByContact() {
+    const filter = filteredContacts.toLowerCase();
     const filtered = contacts.filter((item) =>
-      item.contact.toLowerCase().includes(filteredContacts)
+      item.contact.toLowerCase().includes(filter)
     );
     return filtered;
   }
@@ -18,7 +19,7 @@ export default function ContactsList() {
 
   return (
     <Menu>
-      {visibleContacts.length === 0 ? (
+      {visibleContacts.length === 0 && filteredContacts.length > 0 ? (
         <Item className="contact-list">No matching contacts found</Item>
       ) : visibleContacts.length > 0 ? (
         visibleContacts.map(({ contact, phoneNumber, id }) => (

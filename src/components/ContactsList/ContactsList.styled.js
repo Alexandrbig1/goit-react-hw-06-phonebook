@@ -5,7 +5,7 @@ export const Menu = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  max-height: 19.4rem;
+  max-height: 19.7rem;
   overflow: scroll;
 `;
 

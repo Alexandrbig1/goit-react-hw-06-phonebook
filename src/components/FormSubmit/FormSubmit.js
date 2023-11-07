@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact } from "../../redux/contactSlice";
+import { getContacts } from "../../redux/selectors";
 import {
   FormContactBtn,
   FormLabel,
@@ -12,15 +16,10 @@ import {
   FormHiPhone,
   FormInputWrapper,
 } from "./FormSubmit.styled";
-import { useDispatch, useSelector } from "react-redux";
-import { addContact, removeContact } from "../../redux/contactSlice";
 
-export default function FormSubmit({ onFormSubmit }) {
+export default function FormSubmit() {
   const dispatch = useDispatch();
-  const contactsEl = useSelector((state) => state.contacts);
-
-  console.log(dispatch);
-  console.log(contactsEl);
+  const contacts = useSelector(getContacts);
 
   const [contact, setContact] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -31,10 +30,25 @@ export default function FormSubmit({ onFormSubmit }) {
     if (!newValue.contact || !newValue.phoneNumber) {
       return;
     }
-    console.log(newValue);
-    dispatch(addContact(newValue.contact));
 
-    onFormSubmit(newValue);
+    const contactExist = contacts.some(
+      (item) => item.contact === newValue.contact
+    );
+
+    if (contactExist) {
+      toast(`${newValue.contact} is already in contacts.`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      dispatch(addContact(newValue));
+    }
 
     setContact("");
     setPhoneNumber("");

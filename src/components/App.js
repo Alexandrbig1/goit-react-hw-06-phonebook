@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Filter from "./Filter/Filter";
 import FormSubmit from "./FormSubmit/FormSubmit";
 import ContactsList from "./ContactsList/ContactsList";
 import ThemeButton from "./ThemeButton/ThemeButton";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
+import { useSelector } from "react-redux";
+import { getContacts } from "../redux/selectors";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   AppDiv,
   AppTitleH1,
@@ -49,12 +53,7 @@ const theme = {
 };
 
 export default function App() {
-  const startState = JSON.parse(localStorage.getItem("contacts"));
-
-  const [contacts, setContacts] = useState(
-    startState === null ? [] : startState
-  );
-  const [searchTerm, setSearchTerm] = useState("");
+  const contacts = useSelector(getContacts);
   const [isOpen, setIsOpen] = useState(contacts.length === 0 ? false : true);
   const [isDarkTheme, setIsDarkTheme] = useState(
     contacts.length === 0 ? false : true
@@ -63,40 +62,6 @@ export default function App() {
   const toggleTheme = () => {
     setIsDarkTheme((prevIsDarkTheme) => !prevIsDarkTheme);
   };
-
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-  });
-
-  function onFormSubmit(contact) {
-    const contactExist = contacts.some(
-      (item) => item.contact === contact.contact
-    );
-
-    if (contactExist) {
-      alert(`${contact.contact} is already in contacts.`);
-    } else {
-      setContacts((contacts) => [...contacts, contact]);
-    }
-  }
-
-  function onDeleteHandler(id) {
-    setContacts((contact) => contact.filter((item) => item.id !== id));
-  }
-
-  function changeFilter(e) {
-    const searchContact = e.toLowerCase();
-    setSearchTerm(searchContact);
-  }
-
-  function filteredByContact() {
-    const filter = searchTerm.toLowerCase();
-    const filtered = contacts.filter((item) =>
-      item.contact.toLowerCase().includes(filter)
-    );
-    return filtered;
-  }
-  const visibleContacts = filteredByContact();
 
   return (
     <ThemeProvider theme={isDarkTheme ? theme.dark : theme.light}>
@@ -111,17 +76,12 @@ export default function App() {
             {isOpen && (
               <>
                 <AppTitleH1>Phonebook</AppTitleH1>
-                <FormSubmit onFormSubmit={onFormSubmit} />
+                <FormSubmit />
                 {contacts.length !== 0 && (
                   <AppContactsDiv>
                     <AppTitleH2>Contacts</AppTitleH2>
-                    <Filter contacts={contacts} onInputHandler={changeFilter} />
-                    <ContactsList
-                      searchTerm={searchTerm}
-                      setSearchTerm={setSearchTerm}
-                      contacts={visibleContacts}
-                      onDeleteHandler={onDeleteHandler}
-                    />
+                    <Filter contacts={contacts} />
+                    <ContactsList />
                   </AppContactsDiv>
                 )}
               </>
@@ -129,6 +89,7 @@ export default function App() {
           </AppDiv>
         </AppWrapper>
       </AppContainer>
+      <ToastContainer />
     </ThemeProvider>
   );
 }

@@ -50,8 +50,8 @@ export default function App() {
   const [contacts, setContacts] = useState(
     startState === null ? [] : startState
   );
-  const [isOpen, setIsOpen] = useState(contacts.length === 0 ? false : true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isOpen, setIsOpen] = useState(contacts.length === 0 ? false : true);
   const [isDarkTheme, setIsDarkTheme] = useState(
     contacts.length === 0 ? false : true
   );

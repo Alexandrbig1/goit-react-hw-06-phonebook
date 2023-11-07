@@ -12,8 +12,16 @@ import {
   FormHiPhone,
   FormInputWrapper,
 } from "./FormSubmit.styled";
+import { useDispatch, useSelector } from "react-redux";
+import { addContact, removeContact } from "../../redux/contactSlice";
 
 export default function FormSubmit({ onFormSubmit }) {
+  const dispatch = useDispatch();
+  const contactsEl = useSelector((state) => state.contacts);
+
+  console.log(dispatch);
+  console.log(contactsEl);
+
   const [contact, setContact] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
 
@@ -23,6 +31,8 @@ export default function FormSubmit({ onFormSubmit }) {
     if (!newValue.contact || !newValue.phoneNumber) {
       return;
     }
+    console.log(newValue);
+    dispatch(addContact(newValue.contact));
 
     onFormSubmit(newValue);
 

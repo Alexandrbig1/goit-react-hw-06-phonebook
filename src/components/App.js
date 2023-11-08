@@ -80,7 +80,7 @@ export default function App() {
                 {contacts.length !== 0 && (
                   <AppContactsDiv>
                     <AppTitleH2>Contacts</AppTitleH2>
-                    <Filter contacts={contacts} />
+                    <Filter />
                     <ContactsList />
                   </AppContactsDiv>
                 )}

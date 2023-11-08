@@ -1,11 +1,20 @@
 # **Phonebook** with Redux
 <img align="right" src="https://media.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif" width="100"/>
 
-doing homework while studying in bootcamp @GoIT on Fullstack developer course
+## Description
+
+The Contact Book App is a React application that allows users to manage their contacts. This project was created as a part of a module in a @GoIT Fullstack developer bootcamp, focusing on React, Redux, Redux Persist, and Redux Toolkit.
 
 ## Project Specifications:
 
-React module(Redux/ReduxToolkit/hooks/states/localStorage/derivedStates/events/props/forms/libraries/Formik/Yup/ReactIcons/modernNormalize/styledComponents/nanoid)
+
+* View a list of contacts
+* Add a new contact
+* Delete contacts
+* Filtering existing contacts
+* Data persistence using Redux Persist
+* State management with Redux Toolkit
+* Redux Toolkit for simplifying Redux logic
 
 ## Languages and Tools:
 <div align="center">  
